@@ -27,10 +27,55 @@ Each item must be (P1), (P2), (P3) priority appended.
 
 - Console login
   - [ ] login successfully with valid credentials
+  - [ ] login with wrong password shows error
+  - [ ] session expiry and re-authentication
 - Application integration
-  - [ ] view the list of applications
-  - [ ] create a new single page application
+  - [x] view the list of applications
+  - [x] create a new single page application
+  - [x] edit an application
+  - [ ] delete an application
+  - [ ] search/filter applications in the list
+  - [ ] create a full-stack application
+  - [ ] create a mobile application
+  - [ ] create a backend service application
+- Application configuration
+  - [ ] configure OAuth2/OIDC settings (scopes, grant types)
+  - [ ] manage authorized redirect URIs
+  - [ ] configure token settings (validity periods)
+  - [ ] manage application sign-in flows
+  - [ ] customize application theme/design
 - Manage user types
   - [ ] add a new user type
+  - [ ] view existing user types
+  - [ ] edit a user type
+  - [ ] delete a user type
 - Manage users
-  - [] view user list
+  - [x] view user list
+  - [x] create a new user
+  - [x] edit a user (**BLOCKED — PUT /users/{id} returns 400 due to missing password in edit payload**)
+  - [ ] delete a user
+  - [ ] assign user to a group
+  - [ ] search/filter users in the list
+- Manage groups
+  - [ ] view group list
+  - [ ] create a new group
+  - [ ] edit a group
+  - [ ] delete a group
+- Design & theming
+  - [ ] view available themes
+  - [ ] create a custom theme
+  - [ ] apply theme to an application
+- Sign-in experience (Gate)
+  - [ ] sign in with username and password
+  - [ ] sign in with passkey
+  - [ ] sign in with social providers (Google, GitHub)
+  - [ ] self-registration flow
+- Organization units
+  - [ ] view organization units
+  - [ ] create an organization unit
+- Integrations
+  - [ ] view available integrations
+  - [ ] configure an integration (Google, GitHub)
+- Flows
+  - [ ] view authentication flows
+  - [ ] edit an authentication flow
