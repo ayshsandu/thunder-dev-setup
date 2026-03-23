@@ -30,7 +30,7 @@ git clone https://github.com/manuranga/net-dump
 cd net-dump
 ```
 
-Create `config.json` inside the `net-dump` directory. *(Replace `<thunder-dir>` with the name of the folder extracted in `../.tmp/` by the previous step):*
+Create `config.json` inside the `net-dump` directory. *(Replace `<thunder-dir>` with the name of the thunder distribution folder):*
 
 ```json
 {
@@ -43,8 +43,8 @@ Create `config.json` inside the `net-dump` directory. *(Replace `<thunder-dir>` 
         "port": 8091,
         "interface": "0.0.0.0",
         "ssl": {
-          "key": "../.tmp/<thunder-dir>/repository/resources/security/server.key",
-          "cert": "../.tmp/<thunder-dir>/repository/resources/security/server.cert"
+          "key": "<thunder-dir>/repository/resources/security/server.key",
+          "cert": "<thunder-dir>/repository/resources/security/server.cert"
         }
       },
       "out": {

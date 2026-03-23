@@ -15,3 +15,7 @@ For step-by-step instructions on preparing Thunder for the QA agent, refer to **
 
 You can easily configure the QA agent to evaluate a specific feature or change by pointing it to a single user story. Example prompt is in [TEST_CREATE_USER_PROMPT.md](QA-instructions/CREATE_USER_PROMPT.md).
 
+## What's next
+
+- Setup a Ralph loop for the QA Agent to discover and test all the thunder usecases
+- Add database intercepter to the QA Agent setup to get insights on DB operations
