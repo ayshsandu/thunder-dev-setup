@@ -2,12 +2,31 @@
 
 This guide provides step-by-step instructions on how to set up the Thunder QA agent using a local request interceptor.
 
-## 1. Setup Request Interceptor (net-dump)
+## 1. Configure Thunder Distribution
 
-Clone the `net-dump` repository to handle traffic proxying and logging:
+Prepare the Thunder build by pointing its services to the proxy port (`8091`):
+
+1. Get the Thunder distribution build.
+2. Open `<thunder-dist>/apps/console/config.js` and edit the backend port to **8091**.
+3. Open `<thunder-dist>/apps/gate/config.js` and edit the server port to **8091**.
+4. Open `<thunder-dist>/repository/conf/deployment.yaml` and make sure the following changes are made:
+    - Add **https://localhost:8091** to the CORS allowed origins list.
+    - Add **https://localhost:8091** to the JWT issuer list.
+
+Once configuration is updated, run Thunder.
+
+Or alternatively, use the `setup-agent-env.sh` script to set up the Thunder distribution for the QA agent:
 
 ```bash
-git clone https://github.com/ayshsandu/net-dump
+./scripts/setup-agent-env.sh <path_to_thunder_distribution.zip>
+```
+
+## 2. Setup Request Interceptor (net-dump)
+
+Clone the []`net-dump`](https://github.com/manuranga/net-dump) repository to handle traffic proxying and logging:
+
+```bash
+git clone https://github.com/manuranga/net-dump
 cd net-dump
 ```
 
@@ -43,26 +62,7 @@ Run `net-dump` using its standard execution command. Change the config if necess
 node net-dump.js config.json
 ```
 
-## 2. Configure Thunder Distribution
-
-Next, prepare the Thunder build by pointing its services to the proxy port (`8091`):
-
-1. Get the Thunder distribution build.
-2. Open `<thunder-dist>/apps/console/config.js` and edit the backend port to **8091**.
-3. Open `<thunder-dist>/apps/gate/config.js` and edit the server port to **8091**.
-4. Open `<thunder-dist>/repository/conf/deployment.yaml` and make sure the following changes are made:
-    - Add **https://localhost:8091** to the CORS allowed origins list.
-    - Add **https://localhost:8091** to the JWT issuer list.
-
-Once configuration is updated, run Thunder.
-
-Or alternatively, use the `setup-agent-env.sh` script to set up the Thunder distribution for the QA agent:
-
-```bash
-./scripts/setup-agent-env.sh <path_to_thunder_distribution.zip>
-```
-
-Now you have a Thunder distribution configured for the QA agent.
+Now you have a Thunder distribution configured for the QA agent with a request interceptor.
 
 ```text
   +------------------+                   +------------------+                   +-----------------+

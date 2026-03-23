@@ -1,6 +1,6 @@
 # Thunder Dev & QA Setup
 
-This directory provides the necessary automation scripts, user stories, and prompt configurations to run agentic QA testing against the Thunder.
+This directory provides the necessary automation scripts, user stories, and prompt configurations to run agentic QA testing against [Thunder](https://github.com/asgardeo/thunder).
 
 ## Directory Structure
 - **`scripts/`**: Tools to auto-configure and prepare your Thunder target distribution.
