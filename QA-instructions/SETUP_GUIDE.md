@@ -23,14 +23,14 @@ Or alternatively, use the `setup-agent-env.sh` script to set up the Thunder dist
 
 ## 2. Setup Request Interceptor (net-dump)
 
-Clone the []`net-dump`](https://github.com/manuranga/net-dump) repository to handle traffic proxying and logging:
+Clone the proxy tool to intercept and log traffic:
 
 ```bash
 git clone https://github.com/manuranga/net-dump
 cd net-dump
 ```
 
-Add a `config.json` file in the `net-dump` directory with the following content specifying the paths to the Thunder distribution's server(`<thunder-dist>`) key and certificate:
+Create `config.json` inside the `net-dump` directory. *(Replace `<thunder-dir>` with the name of the folder extracted in `../.tmp/` by the previous step):*
 
 ```json
 {
@@ -43,8 +43,8 @@ Add a `config.json` file in the `net-dump` directory with the following content 
         "port": 8091,
         "interface": "0.0.0.0",
         "ssl": {
-          "key": "<thunder-dist>/repository/resources/security/server.key",
-          "cert": "<thunder-dist>/repository/resources/security/server.cert"
+          "key": "../.tmp/<thunder-dir>/repository/resources/security/server.key",
+          "cert": "../.tmp/<thunder-dir>/repository/resources/security/server.cert"
         }
       },
       "out": {
@@ -57,7 +57,7 @@ Add a `config.json` file in the `net-dump` directory with the following content 
 }
 ```
 
-Run `net-dump` using its standard execution command. Change the config if necessary.
+Run the proxy:
 ```bash
 node net-dump.js config.json
 ```
@@ -82,15 +82,14 @@ Now you have a Thunder distribution configured for the QA agent with a request i
 
 ## 3. Execute QA Instructions
 
-Make sure you coding agent has access to the Thunder distribution, net-dump/, user-stories/, and QA-instructions/.
+With both Thunder and `net-dump` running, ask your coding agent to execute the instructions in:
+**`QA-instructions/RALF_PROMPT.md`**
 
-With `net-dump` and Thunder successfully running:
-- Execute the QA agent instructions provided in `QA-instructions/RALF_PROMPT.md`.
-- As needed based on outcomes, update the user stories located at `user-stories/index.md`.
+Ensure the agent has workspace access (specifically to `net-dump/logs/` and `user-stories/`). It will run the test scenarios and save its findings in the `user-stories/` directory.
 
-## 4. Understanding the Output
+## 4. Understanding the Setup
 
-By routing traffic to port **8091**, `net-dump` intercepts communication between the frontend and the backend before forwarding it to Thunder running on port **8090**.
+By routing traffic to port **8091**, `net-dump` intercepts communication between the frontend and the backend before forwarding it to Thunder backend on port **8090**.
 - **`./logs/net-dump.txt`**: This file contains the general proxy server application logs.
 - **`./logs/requests/`**: This directory securely logs raw intercepted frontend-backend request and response data. These captures provide the necessary traffic details for the QA agent to effectively debug and validate features.
 
