@@ -1,0 +1,9 @@
+# Ignore temporary directories created by setup scripts
+.tmp/
+tmp/
+
+# Ignore Thunder distribution zips
+*.zip
+
+# Ignore macOS system files
+.DS_Store
