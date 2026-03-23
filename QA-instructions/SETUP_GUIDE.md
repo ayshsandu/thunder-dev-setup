@@ -79,21 +79,26 @@ Now you have a Thunder distribution configured for the QA agent with a request i
                                         |  requests  |
                                         +------------+
 ```
+## 4. Dependencies
 
-## 3. Execute QA Instructions
+Install Claude Code.
+
+Install the [Anthropic's chrome extension](https://chromewebstore.google.com/publisher/anthropic/u308d63ea0533efcf7ba778ad42da7390).
+
+## 5. Execute QA Instructions
 
 With both Thunder and `net-dump` running, ask your coding agent to execute the instructions in:
 **`QA-instructions/RALF_PROMPT.md`**
 
 Ensure the agent has workspace access (specifically to `net-dump/logs/` and `user-stories/`). It will run the test scenarios and save its findings in the `user-stories/` directory.
 
-## 4. Understanding the Setup
+## 6. Understanding the Setup
 
 By routing traffic to port **8091**, `net-dump` intercepts communication between the frontend and the backend before forwarding it to Thunder backend on port **8090**.
 - **`./logs/net-dump.txt`**: This file contains the general proxy server application logs.
 - **`./logs/requests/`**: This directory securely logs raw intercepted frontend-backend request and response data. These captures provide the necessary traffic details for the QA agent to effectively debug and validate features.
 
-## 5. Agent Output Structure
+## 6. Agent Output Structure
 
 As the QA agent executes the testing instructions, it outputs findings directly into the `user-stories/` directory, categorized by epic and story (refer to `user-stories/index.md` for defined epics/stories):
 
