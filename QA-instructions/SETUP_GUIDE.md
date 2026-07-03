@@ -10,16 +10,10 @@ Prepare the Thunder build by pointing its services to the proxy port (`8091`):
 2. Open `<thunder-dist>/apps/console/config.js` and edit the backend port to **8091**.
 3. Open `<thunder-dist>/apps/gate/config.js` and edit the server port to **8091**.
 4. Open `<thunder-dist>/repository/conf/deployment.yaml` and make sure the following changes are made:
-    - Add **https://localhost:8091** to the CORS allowed origins list.
-    - Add **https://localhost:8091** to the JWT issuer list.
+    - Add **https://localhost:8091** and **https://localhost:8090** to the CORS allowed origins list.
+    - Add **https://localhost:8091** to the passkey -> allowed_origins list.
 
-Once configuration is updated, run Thunder.
-
-Or alternatively, use the `setup-agent-env.sh` script to set up the Thunder distribution for the QA agent:
-
-```bash
-./scripts/setup-agent-env.sh <path_to_thunder_distribution.zip>
-```
+Once the configuration is updated, run Thunder.
 
 ## 2. Setup Request Interceptor (net-dump)
 
@@ -43,8 +37,8 @@ Create `config.json` inside the `net-dump` directory. *(Replace `<thunder-dir>` 
         "port": 8091,
         "interface": "0.0.0.0",
         "ssl": {
-          "key": "<thunder-dir>/repository/resources/security/server.key",
-          "cert": "<thunder-dir>/repository/resources/security/server.cert"
+          "key": "<thunder-dir>/config/certs/server.key",
+          "cert": "<thunder-dir>/config/certs/server.key"
         }
       },
       "out": {
